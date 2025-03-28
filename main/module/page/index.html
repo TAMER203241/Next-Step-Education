@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programming Lessons</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#4338ca',
+secondary: '#6366f1'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+background-color: rgba(245, 245, 220, 0.404);
+}
+.youtube-container {
+position: relative;
+padding-bottom: 56.25%;
+height: 0;
+overflow: hidden;
+max-width: 100%;
+}
+.youtube-container iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+@media (max-width: 768px) {
+.channel-grid {
+grid-template-columns: 1fr;
+}
+}
+
+</style>
+</head>
+<body >
+<nav class="bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="flex items-center">
+      <button onclick="history.back()" class="mr-4 text-gray-600 hover:text-gray-900">
+        <i class="ri-arrow-left-line text-xl"></i>
+      </button>
+      <h1 class="font-['Pacifico'] text-2xl text-primary">Stepping</h1>
+    </div>
+  </div>
+</nav>
+<div class="max-w-7xl mx-auto px-4 py-8">
+<h1 class="text-3xl font-bold text-gray-900 mb-8">Basic Programming Lessons</h1>
+<div class="grid channel-grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+<div class="youtube-container mb-4 rounded-lg overflow-hidden">
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<h3 class="text-lg font-semibold mb-2">Programming Basics</h3>
+<p class="text-gray-600 text-sm">Learn programming basics from scratch</p>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+<div class="youtube-container mb-4 rounded-lg overflow-hidden">
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLDoPjvoNmBAzH72MTPuAAaYfReraNlQgM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<h3 class="text-lg font-semibold mb-2">Web Development</h3>
+<p class="text-gray-600 text-sm">Comprehensive web development course</p>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+<div class="youtube-container mb-4 rounded-lg overflow-hidden">
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLDoPjvoNmBAyE_gei5d18qkfIe-Z8mocs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<h3 class="text-lg font-semibold mb-2">Mobile Applications</h3>
+<p class="text-gray-600 text-sm">Learn mobile app development</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<h2 class="text-xl font-semibold mb-4">Learning Materials</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+<div class="flex items-center">
+<i class="ri-file-pdf-line text-red-500 text-2xl mr-3"></i>
+<span class="font-medium">Introduction to Programming</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors flex items-center">
+<i class="ri-download-line mr-2"></i>
+Download
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+<div class="flex items-center">
+<i class="ri-file-pdf-line text-red-500 text-2xl mr-3"></i>
+<span class="font-medium">Basic Algorithms</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors flex items-center">
+<i class="ri-download-line mr-2"></i>
+Download
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+<div class="flex items-center">
+<i class="ri-file-pdf-line text-red-500 text-2xl mr-3"></i>
+<span class="font-medium">Exercises and Applications</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors flex items-center">
+<i class="ri-download-line mr-2"></i>
+Download
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h2 class="text-xl font-semibold mb-4">Course Description</h2>
+<p class="text-gray-700 leading-relaxed">
+This course aims to introduce programming basics to beginners in a simple and practical way. You will learn fundamental programming concepts, how to write code, and solve programming problems. The course includes practical applications and real projects to enhance your understanding of various concepts.
+</p>
+</div>
+</div>
+<script>
+document.querySelectorAll('.youtube-container').forEach(container => {
+container.addEventListener('click', function() {
+const iframe = this.querySelector('iframe');
+if (iframe.src.includes('videoseries')) {
+iframe.src += '&autoplay=1';
+}
+});
+});
+document.querySelectorAll('button').forEach(button => {
+button.addEventListener('click', function(e) {
+e.preventDefault();
+const fileName = this.closest('.flex').querySelector('span').textContent;
+const notification = document.createElement('div');
+notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg';
+notification.textContent = `جاري تحميل ${fileName}`;
+document.body.appendChild(notification);
+setTimeout(() => notification.remove(), 3000);
+});
+});
+</script>
+</body>
+</html>

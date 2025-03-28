@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programming Lessons</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#4338ca',
+secondary: '#6366f1'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.youtube-container {
+position: relative;
+padding-bottom: 56.25%;
+height: 0;
+overflow: hidden;
+max-width: 100%;
+}
+.youtube-container iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+@media (max-width: 768px) {
+.channel-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<nav class="bg-white shadow-sm">
+<div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+<div class="flex items-center">
+<button onclick="history.back()" class="mr-4 text-gray-600 hover:text-gray-900">
+<i class="ri-arrow-left-line text-xl"></i>
+</button>
+<h1 class="font-['Pacifico'] text-2xl text-primary">Stepping</h1>
+</div>
+</div>
+</nav>
+<div class="max-w-7xl mx-auto px-4 py-8">
+<h1 class="text-3xl font-bold text-gray-900 mb-8">Basic Programming Lessons</h1>
+<div class="grid channel-grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+<div class="youtube-container mb-4 rounded-lg overflow-hidden">
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<h3 class="text-lg font-semibold mb-2">Programming Basics</h3>
+<p class="text-gray-600 text-sm">Learn programming basics from scratch</p>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+<div class="youtube-container mb-4 rounded-lg overflow-hidden">
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLDoPjvoNmBAzH72MTPuAAaYfReraNlQgM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<h3 class="text-lg font-semibold mb-2">Web Development</h3>
+<p class="text-gray-600 text-sm">Comprehensive web development course</p>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow">
+<div class="youtube-container mb-4 rounded-lg overflow-hidden">
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLDoPjvoNmBAyE_gei5d18qkfIe-Z8mocs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<h3 class="text-lg font-semibold mb-2">Mobile Applications</h3>
+<p class="text-gray-600 text-sm">Learn mobile app development</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<h2 class="text-xl font-semibold mb-4">Learning Materials</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+<div class="flex items-center">
+<i class="ri-file-pdf-line text-red-500 text-2xl mr-3"></i>
+<span class="font-medium">Introduction to Programming</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors flex items-center">
+<i class="ri-download-line mr-2"></i>
+Download
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+<div class="flex items-center">
+<i class="ri-file-pdf-line text-red-500 text-2xl mr-3"></i>
+<span class="font-medium">Basic Algorithms</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors flex items-center">
+<i class="ri-download-line mr-2"></i>
+Download
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+<div class="flex items-center">
+<i class="ri-file-pdf-line text-red-500 text-2xl mr-3"></i>
+<span class="font-medium">Exercises and Applications</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors flex items-center">
+<i class="ri-download-line mr-2"></i>
+Download
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h2 class="text-xl font-semibold mb-4">Course Description</h2>
+<p class="text-gray-700 leading-relaxed">
+This course aims to introduce programming basics to beginners in a simple and practical way. You will learn fundamental programming concepts, how to write code, and solve programming problems. The course includes practical applications and real projects to enhance your understanding of various concepts.
+</p>
+</div>
+</div>
+<script>
+// Mock file data for demonstration
+const mockFiles = [
+{ name: "Introduction to Programming", size: 2.4, timeEstimate: 15 },
+{ name: "Basic Algorithms", size: 3.8, timeEstimate: 25 },
+{ name: "Exercises and Applications", size: 5.2, timeEstimate: 35 }
+];
+document.querySelectorAll('.youtube-container').forEach(container => {
+container.addEventListener('click', function() {
+const iframe = this.querySelector('iframe');
+if (iframe.src.includes('videoseries')) {
+iframe.src += '&autoplay=1';
+}
+});
+});
+// Create download overlay
+function createDownloadOverlay() {
+const overlay = document.createElement('div');
+overlay.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+const modal = document.createElement('div');
+modal.className = 'bg-white rounded-lg p-6 max-w-md w-full mx-4';
+const header = document.createElement('div');
+header.className = 'flex items-center justify-between mb-4';
+const title = document.createElement('h3');
+title.className = 'text-lg font-semibold';
+title.textContent = 'Downloading File';
+const closeBtn = document.createElement('button');
+closeBtn.className = 'text-gray-500 hover:text-gray-700';
+closeBtn.innerHTML = '<i class="ri-close-line text-xl"></i>';
+closeBtn.addEventListener('click', () => overlay.remove());
+header.appendChild(title);
+header.appendChild(closeBtn);
+const content = document.createElement('div');
+content.className = 'mb-4';
+const fileInfo = document.createElement('div');
+fileInfo.className = 'flex justify-between text-sm text-gray-600 mb-2';
+const fileName = document.createElement('span');
+fileName.id = 'download-filename';
+const fileSize = document.createElement('span');
+fileSize.id = 'download-filesize';
+fileInfo.appendChild(fileName);
+fileInfo.appendChild(fileSize);
+const progressContainer = document.createElement('div');
+progressContainer.className = 'w-full bg-gray-200 rounded-full h-2.5 mb-2';
+const progressBar = document.createElement('div');
+progressBar.className = 'bg-primary h-2.5 rounded-full transition-all duration-300';
+progressBar.id = 'download-progress';
+progressBar.style.width = '0%';
+progressContainer.appendChild(progressBar);
+const progressText = document.createElement('div');
+progressText.className = 'flex justify-between text-xs text-gray-600';
+const percentage = document.createElement('span');
+percentage.id = 'download-percentage';
+percentage.textContent = '0%';
+const timeRemaining = document.createElement('span');
+timeRemaining.id = 'download-time';
+progressText.appendChild(percentage);
+progressText.appendChild(timeRemaining);
+const status = document.createElement('div');
+status.className = 'mt-4 text-center';
+status.id = 'download-status';
+content.appendChild(fileInfo);
+content.appendChild(progressContainer);
+content.appendChild(progressText);
+content.appendChild(status);
+modal.appendChild(header);
+modal.appendChild(content);
+overlay.appendChild(modal);
+document.body.appendChild(overlay);
+return {
+overlay,
+progressBar,
+percentage,
+timeRemaining,
+status,
+fileName,
+fileSize
+};
+}
+// Simulate file download
+function simulateDownload(file) {
+const { overlay, progressBar, percentage, timeRemaining, status, fileName, fileSize } = createDownloadOverlay();
+fileName.textContent = file.name;
+fileSize.textContent = `${file.size} MB`;
+timeRemaining.textContent = `Est. time: ${file.timeEstimate} seconds`;
+let progress = 0;
+const totalSteps = 100;
+const stepTime = file.timeEstimate * 10; // Convert to milliseconds and divide by steps
+// Random chance of error (10%)
+const willFail = Math.random() < 0.1;
+const interval = setInterval(() => {
+progress += 1;
+const currentProgress = Math.min(progress, 100);
+progressBar.style.width = `${currentProgress}%`;
+percentage.textContent = `${currentProgress}%`;
+const remainingSteps = totalSteps - progress;
+const remainingTime = Math.ceil(remainingSteps * stepTime / 1000);
+timeRemaining.textContent = remainingTime > 0 ? `${remainingTime} seconds left` : 'Completing...';
+if (willFail && progress === 65) {
+clearInterval(interval);
+progressBar.className = 'bg-red-500 h-2.5 rounded-full';
+status.innerHTML = `
+<div class="text-red-500 mb-2">Download failed</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">
+Try Again
+</button>
+`;
+status.querySelector('button').addEventListener('click', () => {
+overlay.remove();
+setTimeout(() => simulateDownload(file), 500);
+});
+} else if (progress >= 100) {
+clearInterval(interval);
+status.innerHTML = `
+<div class="text-green-500 mb-2">Download complete</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">
+Open File
+</button>
+`;
+status.querySelector('button').addEventListener('click', () => {
+overlay.remove();
+const successNotification = document.createElement('div');
+successNotification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg';
+successNotification.textContent = `${file.name} opened successfully`;
+document.body.appendChild(successNotification);
+setTimeout(() => successNotification.remove(), 3000);
+});
+// Create and trigger actual file download
+const link = document.createElement('a');
+link.href = createFileBlob(file.name);
+link.download = `${file.name}.pdf`;
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+}
+}, stepTime);
+}
+// Create a blob URL for the file download
+function createFileBlob(fileName) {
+  // Create a simple PDF-like content (this is just a placeholder)
+  const content = `This is a sample PDF file for ${fileName}`;
+  const blob = new Blob([content], { type: 'application/pdf' });
+  return URL.createObjectURL(blob);
+}
+// Add event listeners to download buttons
+document.querySelectorAll('button').forEach(button => {
+if (button.innerHTML.includes('ri-download-line')) {
+button.addEventListener('click', function(e) {
+e.preventDefault();
+const fileName = this.closest('.flex').querySelector('span').textContent;
+const fileData = mockFiles.find(file => file.name === fileName) ||
+{ name: fileName, size: 3.5, timeEstimate: 20 };
+simulateDownload(fileData);
+});
+}
+});
+</script>
+</body>
+</html>

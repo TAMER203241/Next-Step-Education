@@ -1,0 +1,119 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ALGO2  </title>
+    <link rel="stylesheet" href="ANALYSE2.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    
+</head>
+<body class="bg-gray-50 min-h-screen">
+<div id="response">  </div>
+<form   method="POST">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center"> ALGO2  </h1>
+            
+
+            <div class="bg-white rounded-lg p-4 shadow-sm mb-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm text-gray-600"> Progress  </span>
+                    <span id="progress-text" class="text-sm font-medium text-primary progress-percentage">0%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="progress-bar bg-primary h-2.5 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        
+            
+          </div>
+
+
+          <div class="grid gap-4">
+
+            <div class="lesson-item bg-white rounded-lg p-6 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="checkbox-wrapper">
+                    <input type="checkbox" id="lesson1" class="lesson-checkbox" data-lesson="1"> 
+                        <label for="lesson1" class="text-lg font-medium text-gray-900"> Bases  </label>
+                    </div>
+                    <a href="ALGOO2.html" class="text-primary hover:text-primary/80">
+                        <i class="ri-arrow-left-line ri-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="lesson-item bg-white rounded-lg p-6 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="checkbox-wrapper">
+                    <input type="checkbox" id="lesson2" class="lesson-checkbox" data-lesson="2"> 
+                        <label for="lesson2" class="text-lg font-medium text-gray-900"> Les Enregistrements </label>
+                    </div>
+                    <a href=" " class="text-primary hover:text-primary/80">
+                        <i class="ri-arrow-left-line ri-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="lesson-item bg-white rounded-lg p-6 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="checkbox-wrapper">
+                    <input type="checkbox" id="lesson3" class="lesson-checkbox" data-lesson="3"> 
+                        <label for="lesson3" class="text-lg font-medium text-gray-900"> Les Pointeurs </label>
+                    </div>
+                    <a href=" " class="text-primary hover:text-primary/80">
+                        <i class="ri-arrow-left-line ri-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="lesson-item bg-white rounded-lg p-6 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="checkbox-wrapper">
+                    <input type="checkbox" id="lesson4" class="lesson-checkbox" data-lesson="4"> 
+                        <label for="lesson4" class="text-lg font-medium text-gray-900">  Les Listes Chainées</label>
+                    </div>
+                    <a href=" " class="text-primary hover:text-primary/80">
+                        <i class="ri-arrow-left-line ri-lg"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+     </div>
+ </form>
+
+
+
+    <script src="algo.js">  
+</script>
+</body>
+</html>
