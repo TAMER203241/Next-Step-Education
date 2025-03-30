@@ -12,7 +12,7 @@
         if (specialite === "mathematiques") {
             sections = ["A", "B", "C"];
         } else if (specialite === "informatique") {
-            sections = ["A", "B", "C", "D", "E", "F"];
+            sections = ["1", "2", "3", "4", "5", "6", "7"];
         }
 
         // إضافة الأقسام إلى القائمة

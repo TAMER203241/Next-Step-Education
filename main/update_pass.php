@@ -6,13 +6,7 @@ ini_set('display_errors', 1);
 if (!isset($_SESSION['matricul'])) {
     die("خطأ: المستخدم غير مسجل الدخول!");
 }
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tamer";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+require_once 'config.php';
 
 if ($conn->connect_error) {
     die("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);

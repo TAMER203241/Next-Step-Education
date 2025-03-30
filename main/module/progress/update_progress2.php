@@ -1,13 +1,8 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tamer";
+require_once 'config.php';
 
 $matricul = $_SESSION['matricul']; // رقم تسجيل المستخدم من الجلسة
-
-$conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die(json_encode(["success" => false, "message" => "فشل الاتصال بقاعدة البيانات"]));

@@ -6,6 +6,8 @@ if (!isset($_SESSION['nom'])) {
 
     exit();
 
+
+    
 }
 
 
@@ -55,19 +57,22 @@ DEFAULT: '8px',
 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 }
+
 </style>
 </head>
 <body >
-  
 <header class="bg-white shadow-sm fixed w-full top-0 z-50">
-<div class="container mx-auto px-4 h-16 flex justify-between items-center">
-<h1 class="text-xl font-bold"> Next-Step Education </h1>
-<div class="flex items-center gap-4 relative">
-<div class="cursor-pointer flex items-center gap-2" onclick="toggleProfile()">
+  <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+    
+    <!-- اسم المستخدم في أقصى اليسار -->
+    <div class="flex-1 flex justify-start items-center gap-4 relative">
+      <div class="cursor-pointer flex items-center gap-2" onclick="toggleProfile()">
 <img src="../photo/photo_2025-03-18_18-35-35.jpg" class="w-10 h-10 rounded-full object-cover" alt="Profile">
 <span class="font-medium"> <?php echo htmlspecialchars($_SESSION['nom']) . "  " . htmlspecialchars($_SESSION['prenom']); ?> </span>
 </div>
-<div id="profileModal" class="hidden absolute left-0 top-12 w-72 bg-white rounded-lg shadow-lg p-4 border">
+<div id="profileModal" class="hidden absolute right-0 top-12 w-72 bg-white rounded-lg shadow-lg p-4 border">
+
+
   <div class="space-y-3">
     <div>
       <p class="text-sm text-gray-500"> nom et prenom </p>
@@ -79,11 +84,15 @@ grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     </div>
     <div>
       <p class="text-sm text-gray-500"> filiere </p>
-      <p class="font-medium"> mathematique </p>
+      <p class="font-medium"> <?php echo htmlspecialchars($_SESSION['specialite']) ; ?> </p>
     </div>
     <div>
       <p class="text-sm text-gray-500"> section </p>
-      <p class="font-medium"> A </p>
+      <p class="font-medium"> <?php echo htmlspecialchars($_SESSION['section']) ; ?> </p>
+    </div>
+    <div>
+      <p class="text-sm text-gray-500"> groupe </p>
+      <p class="font-medium"> <?php echo htmlspecialchars($_SESSION['groupe']) ; ?> </p>
     </div>
     <div class="pt-2">
       <button onclick="showPasswordModal()" class="w-full bg-primary text-white py-2 px-4 rounded-button hover:bg-primary/90 transition-colors">
@@ -161,6 +170,38 @@ document.addEventListener('click', (e) => {
   }
 });
 </script>
+
+
+
+
+
+<div class="absolute left-1/2 transform -translate-x-1/2">
+  <div class="relative flex bg-gray-200 rounded-full p-1 w-40">
+    <!-- زر S1 -->
+    <input type="radio" id="s1" name="switch" value="s1" class="hidden peer/s1" onclick="showAlert()">
+    <label for="s1" class="w-1/2 text-center py-2 rounded-full cursor-pointer peer-checked/s1:bg-green-500 peer-checked/s1:text-white transition">S1</label>
+
+    <!-- زر S2 (مفعل افتراضيًا) -->
+    <input type="radio" id="s2" name="switch" value="s2" class="hidden peer/s2" checked>
+    <label for="s2" class="w-1/2 text-center py-2 rounded-full cursor-pointer peer-checked/s2:bg-green-500 peer-checked/s2:text-white transition">S2</label>
+  </div>
+</div>
+
+<script>
+  function showAlert() {
+    alert("  صفحة S1 غير جاهزة حاليا ");
+    document.getElementById("s2").checked = true; // إعادة تحديد S2 تلقائيًا
+  }
+</script>
+
+
+
+
+    <!-- اسم الموقع في أقصى اليمين -->
+    <div class="flex-1 flex justify-end">
+      <h1 class="text-xl font-bold text-right">Next-Step Education</h1>
+    </div>
+
 </div>
 </header>
 
@@ -175,105 +216,348 @@ document.addEventListener('click', (e) => {
 <div class="grid grid-cards gap-6 md:grid-cols-3">
 
 
-<div class="bg-orange-50 rounded-lg p-6 shadow-sm" onclick="window.location.href='module/ANALYSE2.html' " >
-<h3 class="text-lg font-semibold mb-4"> Analyse 2 </h3>
-<div class="relative pt-1">
-<div class="flex mb-2 items-center justify-between">
-<div class="text-right">
-<span id="ana" class="text-xs font-semibold inline-block text-orange-600">0%</span>
+
+
+
+
+<div class="bg-orange-50 rounded-lg p-6 shadow-sm text-right flex flex-col items-end" 
+     onclick="window.location.href='module/ANALYSE2.html'" 
+     dir="rtl">
+  
+  <h3 class="text-lg font-semibold mb-4 w-full text-left">Analyse 2</h3>
+
+  <div class="relative pt-1 w-full">
+    <div class="flex mb-2 items-center justify-end w-full"> 
+      <span id="ana" class="text-xs font-semibold inline-block text-orange-600">0%</span>
+    </div>
+
+    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-orange-200 w-full flex-row-reverse">
+      <div id="anabar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-500"
+           style="width: 0%; direction: rtl; float: right;">
+      </div>
+    </div>
+
+    <!-- ⏳ Countdown Display -->
+    <div class="text-orange-600 font-semibold text-sm mt-2 text-left ">
+      next test  : <span id="countdown"> </span>[ for section A ]
+    </div>
+
+  </div>
+
 </div>
-</div>
-<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-orange-200">
-<div id="anabar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-500"></div>
-</div>
-</div>
-</div>
+
+<script>
+// 🎯 ✅ Set exam date (Change this as needed)
+const examDate = new Date("2025-04-06T09:40:00").getTime(); 
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const timeRemaining = examDate - now;
+
+    if (timeRemaining <= 0) {
+        document.getElementById("countdown").innerHTML = "The exam has started!";
+        return;
+    }
+
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById("countdown").innerHTML = `${days} days ${hours} hours`;
+}
+
+// 🔄 Update the countdown every hour instead of every second (since seconds/minutes are removed)
+setInterval(updateCountdown, 60 * 60 * 1000);
+
+// 🔥 Run the countdown immediately on page load
+updateCountdown();
+</script>
 
 
 
 
 
-<div class="bg-purple-50 rounded-lg p-6 shadow-sm" onclick="window.location.href='module/ALGO2.html' ">
-<h3 class="text-lg font-semibold mb-4"> Algorithme 2 </h3>
-<div class="relative pt-1">
-<div class="flex mb-2 items-center justify-between">
-<div class="text-right">
-<span id="algo" class="text-xs font-semibold inline-block text-purple-600">0%</span>
-</div>
-</div>
-<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-purple-200">
-<div id="algobar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"></div>
-</div>
-</div>
-</div>
-
-
-
-
-<div class="bg-blue-50 rounded-lg p-6 shadow-sm" onclick="window.location.href='module/ALGEBRE2.html' ">
-<h3 class="text-lg font-semibold mb-4"> Algebre 2 </h3>
-<div class="relative pt-1">
-<div class="flex mb-2 items-center justify-between">
-<div class="text-right">
-<span id="alg" class="text-xs font-semibold inline-block text-blue-600">0%</span>
-</div>
-</div>
-<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
-<div id="algbar"  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
-</div>
-</div>
-</div>
-
-
-
-
-<div class="bg-pink-50 rounded-lg p-6 shadow-sm"  onclick="window.location.href='module/STRM2.html' ">
-<h3 class="text-lg font-semibold mb-4"> STRM 2 </h3>
-<div class="relative pt-1">
-<div class="flex mb-2 items-center justify-between">
-<div class="text-right">
-<span id="strm" class="text-xs font-semibold inline-block text-pink-600">0%</span>
-</div>
-</div>
-<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
-<div id="strmbar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
-</div>
-</div>
-</div>
 
 
 
 
 
-<div class="bg-green-50 rounded-lg p-6 shadow-sm" onclick="window.location.href='module/ELECTRICITE.html' ">
-<h3 class="text-lg font-semibold mb-4"> electrique </h3>
-<div class="relative pt-1">
-<div class="flex mb-2 items-center justify-between">
-<div class="text-right">
-<span id="elec"  class="text-xs font-semibold inline-block text-green-600">0%</span>
+
+<div class="bg-purple-50 rounded-lg p-6 shadow-sm text-right flex flex-col items-end" 
+     onclick="window.location.href='module/ALGO2.html'" 
+     dir="rtl">
+  
+  <h3 class="text-lg font-semibold mb-4 w-full text-left">Algorithme 2</h3>
+
+  <div class="relative pt-1 w-full">
+    <div class="flex mb-2 items-center justify-end w-full"> 
+      <span id="algo" class="text-xs font-semibold inline-block text-purple-600">0%</span>
+    </div>
+
+    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-purple-200 w-full flex-row-reverse">
+      <div id="algobar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
+           style="width: 0%; direction: rtl; float: right;">
+      </div>
+    </div>
+
+    <!-- ⏳ Countdown Display -->
+    <div class="text-purple-600 font-semibold text-sm mt-2 text-left">
+      next test  : <span id="countdown-algo"></span>
+    </div>
+
+  </div>
+
 </div>
-</div>
-<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-green-200">
-<div id="elecbar"  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
-</div>
-</div>
-</div>
+
+<script>
+// 🎯 ✅ Set exam date (Change this as needed)
+const examDateAlgo = new Date("2025-04-20T10:00:00").getTime(); 
+
+function updateCountdownAlgo() {
+    const now = new Date().getTime();
+    const timeRemaining = examDateAlgo - now;
+
+    if (timeRemaining <= 0) {
+        document.getElementById("countdown-algo").innerHTML = "The exam has started!";
+        return;
+    }
+
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById("countdown-algo").innerHTML = `${days} days ${hours} hours`;
+}
+
+// 🔄 Update the countdown every hour instead of every second
+setInterval(updateCountdownAlgo, 60 * 60 * 1000);
+
+// 🔥 Run the countdown immediately on page load
+updateCountdownAlgo();
+</script>
 
 
 
-<div class="bg-indigo-50 rounded-lg p-6 shadow-sm"  onclick="window.location.href='module/STAT&PROBA.html' ">
-<h3 class="text-lg font-semibold mb-4"> STAT/PROBA </h3>
-<div class="relative pt-1">
-<div class="flex mb-2 items-center justify-between">
-<div class="text-right">
-<span id="stat"  class="text-xs font-semibold inline-block text-indigo-600">0%</span>
+
+
+<div class="bg-blue-50 rounded-lg p-6 shadow-sm text-right flex flex-col items-end" 
+     onclick="window.location.href='module/ALGEBRE2.html'" 
+     dir="rtl">
+  
+  <h3 class="text-lg font-semibold mb-4 w-full text-left">Algebre 2</h3>
+
+  <div class="relative pt-1 w-full">
+    <div class="flex mb-2 items-center justify-end w-full"> 
+      <span id="alg" class="text-xs font-semibold inline-block text-blue-600">0%</span>
+    </div>
+
+    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200 w-full flex-row-reverse">
+      <div id="algbar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
+           style="width: 0%; direction: rtl; float: right;">
+      </div>
+    </div>
+
+    <!-- ⏳ Countdown Display -->
+    <div class="text-blue-600 font-semibold text-sm mt-2 text-left">
+     next test  : <span id="countdown-algebre"></span>
+    </div>
+
+  </div>
+
 </div>
+
+<script>
+// 🎯 ✅ Set exam date (Change this as needed)
+const examDateAlgebre = new Date("2025-04-25T10:00:00").getTime(); 
+
+function updateCountdownAlgebre() {
+    const now = new Date().getTime();
+    const timeRemaining = examDateAlgebre - now;
+
+    if (timeRemaining <= 0) {
+        document.getElementById("countdown-algebre").innerHTML = "The exam has started!";
+        return;
+    }
+
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById("countdown-algebre").innerHTML = `${days} days ${hours} hours`;
+}
+
+// 🔄 Update the countdown every hour instead of every second
+setInterval(updateCountdownAlgebre, 60 * 60 * 1000);
+
+// 🔥 Run the countdown immediately on page load
+updateCountdownAlgebre();
+</script>
+
+
+
+
+
+<div class="bg-pink-50 rounded-lg p-6 shadow-sm text-right flex flex-col items-end" 
+     onclick="window.location.href='module/STRM2.html'" 
+     dir="rtl">
+  
+  <h3 class="text-lg font-semibold mb-4 w-full text-left">STRM 2</h3>
+
+  <div class="relative pt-1 w-full">
+    <div class="flex mb-2 items-center justify-end w-full"> 
+      <span id="strm" class="text-xs font-semibold inline-block text-pink-600">0%</span>
+    </div>
+
+    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200 w-full flex-row-reverse">
+      <div id="strmbar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"
+           style="width: 0%; direction: rtl; float: right;">
+      </div>
+    </div>
+
+    <!-- ⏳ Countdown Display -->
+    <div class="text-pink-600 font-semibold text-sm mt-2 text-left">
+      next test  : <span id="countdown-strm"></span>
+    </div>
+
+  </div>
+
 </div>
-<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
-<div id="statbar"  class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500"></div>
+
+<script>
+// 🎯 ✅ Set exam date (Change this as needed)
+const examDateStrm = new Date("2025-05-10T10:00:00").getTime(); 
+
+function updateCountdownStrm() {
+    const now = new Date().getTime();
+    const timeRemaining = examDateStrm - now;
+
+    if (timeRemaining <= 0) {
+        document.getElementById("countdown-strm").innerHTML = "The exam has started!";
+        return;
+    }
+
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById("countdown-strm").innerHTML = `${days} days ${hours} hours`;
+}
+
+// 🔄 Update the countdown every hour instead of every second
+setInterval(updateCountdownStrm, 60 * 60 * 1000);
+
+// 🔥 Run the countdown immediately on page load
+updateCountdownStrm();
+</script>
+
+
+
+
+
+
+<div class="bg-green-50 rounded-lg p-6 shadow-sm text-right flex flex-col items-end" 
+     onclick="window.location.href='module/ELECTRICITE.html'" 
+     dir="rtl">
+  
+  <h3 class="text-lg font-semibold mb-4 w-full text-left">Electrique</h3>
+
+  <div class="relative pt-1 w-full">
+    <div class="flex mb-2 items-center justify-end w-full"> 
+      <span id="elec" class="text-xs font-semibold inline-block text-green-600">0%</span>
+    </div>
+
+    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-green-200 w-full flex-row-reverse">
+      <div id="elecbar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
+           style="width: 0%; direction: rtl; float: right;">
+      </div>
+    </div>
+
+    <!-- ⏳ Countdown Display -->
+    <div class="text-green-600 font-semibold text-sm mt-2 text-left">
+      next test  : <span id="countdown-elec"></span>
+    </div>
+
+  </div>
+
 </div>
+
+<script>
+// 🎯 ✅ Set exam date (Change this as needed)
+const examDateElec = new Date("2025-06-15T10:00:00").getTime(); 
+
+function updateCountdownElec() {
+    const now = new Date().getTime();
+    const timeRemaining = examDateElec - now;
+
+    if (timeRemaining <= 0) {
+        document.getElementById("countdown-elec").innerHTML = "The exam has started!";
+        return;
+    }
+
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById("countdown-elec").innerHTML = `${days} days ${hours} hours`;
+}
+
+// 🔄 Update the countdown every hour
+setInterval(updateCountdownElec, 60 * 60 * 1000);
+
+// 🔥 Run the countdown immediately on page load
+updateCountdownElec();
+</script>
+
+
+
+
+<div class="bg-indigo-50 rounded-lg p-6 shadow-sm text-right flex flex-col items-end" 
+     onclick="window.location.href='module/STAT&PROBA.html'" 
+     dir="rtl">
+  
+  <h3 class="text-lg font-semibold mb-4 w-full text-left">PROBA/STAT</h3>
+
+  <div class="relative pt-1 w-full">
+    <div class="flex mb-2 items-center justify-end w-full"> 
+      <span id="stat" class="text-xs font-semibold inline-block text-indigo-600">0%</span>
+    </div>
+
+    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200 w-full flex-row-reverse">
+      <div id="statbar" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500"
+           style="width: 0%; direction: rtl; float: right;">
+      </div>
+    </div>
+
+    <!-- ⏳ Countdown Display -->
+    <div class="text-indigo-600 font-semibold text-sm mt-2 text-left">
+      next test  : <span id="countdown-stat"></span>
+    </div>
+
+  </div>
+
 </div>
-</div>
+
+<script>
+// 🎯 ✅ Set exam date (Change this as needed)
+const examDateStat = new Date("2025-06-20T09:00:00").getTime(); 
+
+function updateCountdownStat() {
+    const now = new Date().getTime();
+    const timeRemaining = examDateStat - now;
+
+    if (timeRemaining <= 0) {
+        document.getElementById("countdown-stat").innerHTML = "The exam has started!";
+        return;
+    }
+
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    document.getElementById("countdown-stat").innerHTML = `${days} days ${hours} hours`;
+}
+
+// 🔄 Update the countdown every hour
+setInterval(updateCountdownStat, 60 * 60 * 1000);
+
+// 🔥 Run the countdown immediately on page load
+updateCountdownStat();
+</script>
+
 
 
 
@@ -281,7 +565,7 @@ document.addEventListener('click', (e) => {
 </main>
 
 
-<script src="tamm.js" >  </script>
+<script src="new.js" >  </script>
 
 </body>
 </html>

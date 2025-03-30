@@ -17,20 +17,17 @@ function showError($error) {
 function isActiveForm($formName, $activeForm) {
     return $formName === $activeForm ? 'active' : '';
 }
-
-
-
 ?>
 
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
+<head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="ttt.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -59,14 +56,23 @@ function isActiveForm($formName, $activeForm) {
             }
         }
     </script>
+    <style>
+
+
+    </style>
   
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <div id="login-container" class="flex min-h-screen">
-        <div class="w-full max-w-md m-auto bg-white rounded-lg shadow-lg p-8">
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center">
+
+<div class="text-center mt-0">
+        <h1 id="text">Your Home for Study</h1>
+    </div>
+<br>
+    <div id="login-container" class="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+        <div >
             <div class="text-center mb-8">
                 
-                <h1 class="text-2xl font-bold text-gray-900"> Next-Step Education</h1>
+                <h1 id="text1"> Next-Step Education </h1>
                 <h2 class="text-2xl font-bold text-gray-900">تسجيل الدخول</h2>
                 <?= showError($errors['login']);?>
                 <?= showError($errors['register']);?>
@@ -76,10 +82,14 @@ function isActiveForm($formName, $activeForm) {
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1"   > رقم التسجيل </label>
                     <div class="relative">
-                        <input type="number" name="Z1" required class="w-full pr-10 pl-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary" placeholder=" ادخل رقم التسجيل ">
-                        <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                            <i class="ri-mail-line text-gray-400"></i>
-                        </div>
+    <input type="number" name="Z1" required 
+        class="w-full pr-10 pl-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary no-spinner" 
+        placeholder="ادخل رقم التسجيل">
+    <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+        <i class="ri-mail-line text-gray-400"></i>
+    </div>
+</div>
+
                     </div>
                 </div>
 
@@ -92,6 +102,7 @@ function isActiveForm($formName, $activeForm) {
                         </div>
                     </div>
                 </div>
+                <br>
                 <button name="login" type="submit" class="w-full bg-primary text-white py-2 px-4 rounded-button hover:bg-primary/90 transition-colors font-medium" >تسجيل الدخول</button>
             </form>
 
@@ -100,60 +111,103 @@ function isActiveForm($formName, $activeForm) {
             </div>
         </div>
     </div>
-
     <div id="signup-container" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div class="bg-white rounded-lg p-8 w-full max-w-md mx-4">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold text-gray-900">إنشاء حساب جديد</h2>
-                <button onclick="hideSignup()" class="text-gray-500 hover:text-gray-700">
-                    <i class="ri-close-line text-xl"></i>
-                </button>
-            </div>
 
-            <form id="signup-form" class="space-y-6" action="tamer.php" method="post"  >
-                
 
-                <div class="grid grid-cols-2 gap-4">
-                
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">  الاسم  </label>
-                        <input  name="prenom" type="text" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">اللقب</label>
-                        <input name="nom" type="text" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
-                    </div>
-                </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1"> رقم التسجيل </label>
-                    <div class="relative">
-                        <input name="matricul" type="number" required class="w-full pr-10 pl-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
-                        <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                            <i class="ri-mail-line text-gray-400"></i>
-                        </div>
-                    </div>
-                </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">كلمة المرور</label>
-                    <div class="relative">
-                        <input name="pass" type="password" required class="w-full pr-10 pl-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
-                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onclick="togglePassword(this)">
-                            <i class="ri-eye-line text-gray-400"></i>
-                        </div>
-                    </div>
-                </div>
-        
-                <button name="register" type="submit" class="w-full bg-primary text-white py-2 px-4 rounded-button hover:bg-primary/90 transition-colors font-medium" >إنشاء الحساب</button>
-            </form>
-        </div>
+
+
+    <div class="bg-white rounded-lg p-8 w-full max-w-md mx-4">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-900">إنشاء حساب جديد</h2>
+        <button onclick="hideSignup()" class="text-gray-500 hover:text-gray-700">
+            <i class="ri-close-line text-xl"></i>
+        </button>
     </div>
+
+    <form id="signup-form" class="space-y-6" action="tamer.php" method="post">
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">الاسم</label>
+                <input name="prenom" type="text" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">اللقب</label>
+                <input name="nom" type="text" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">رقم التسجيل</label>
+            <input name="matricul" type="number" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+        </div>
+
+        <!-- حقل اختيار التخصص -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">التخصص</label>
+            <select name="specialite" id="specialite" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+                <option value="">اختر التخصص</option>
+                <option value="mathematiques">Mathématiques</option>
+                <option value="informatique">Informatique</option>
+            </select>
+        </div>
+
+        <!-- حقل اختيار القسم -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">القسم</label>
+            <select name="section" id="section" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+                <option value="">اختر القسم</option>
+            </select>
+        </div>
+
+        <!-- حقل اختيار الفوج -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">الفوج</label>
+            <select name="groupe" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+                <option value="">اختر الفوج</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">كلمة المرور</label>
+            <div class="relative">
+                <input name="pass" type="text" required class="w-full pr-10 pl-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onclick="togglePassword(this)">
+                    <i class="ri-eye-line text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+
+        <button name="register" type="submit" class="w-full bg-primary text-white py-2 px-4 rounded-button hover:bg-primary/90 transition-colors font-medium">
+            إنشاء الحساب
+        </button>
+    </form>
+</div>
+
+
+
+
+
+
+    </div>
+
+
+    <div class="text-center text-gray-600 mt-4">
+        <p>Developed by: <span class="font-bold">Tamer DZ, Islam, Lina, Lotfi</span></p>
+    </div>
+
 
     <div id="toast" class="fixed top-4 right-4 hidden bg-green-500 text-white px-6 py-3 rounded shadow-lg">
-        <p class="text-sm"></p>
+        <p class="text-sm">  </p>
     </div>
 
-    <script src="index.js"> </script>
+    <script src="hh.js">
+    
+    </script>
 </body>
 </html>

@@ -1,0 +1,68 @@
+:where([class^="ri-"])::before { content: "\f3c2"; }
+@font-face {
+    font-family: 'Noto Sans Arabic';
+    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+}
+body {
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* إخفاء الأسهم في Firefox */
+input[type=number] {
+  appearance: textfield; /* طريقة موحدة تعمل على جميع المتصفحات */
+}
+.error-message {  
+padding: 12px;
+background: #f8d7da;
+border-radius: 6px;
+font-size: 16px;
+color: #a42834;
+text-align: center;
+margin-bottom: 20px;
+}
+#text {
+    color: rgb(2, 234, 255);
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+   text-shadow: 3px 3px 5px black;
+   font-family: 'Comic Sans MS', cursive, sans-serif;
+
+  }
+#text1 {
+    color: rgb(0, 0, 0);
+    font-size: 33px;
+    text-align: center;
+    font-weight: bold;
+   text-shadow: 1px 1px 2px rgb(255, 0, 0);
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+
+  }
+
+
+
+  .font1 { font-family: Arial, sans-serif; }
+.font2 { font-family: 'Times New Roman', serif; }
+.font3 { font-family: 'Courier New', monospace; }
+.font4 { font-family: 'Georgia', serif; }
+.font5 { font-family: 'Verdana', sans-serif; }
+.font6 { font-family: 'Trebuchet MS', sans-serif; }
+.font7 { font-family: 'Impact', sans-serif; }
+.font8 { font-family: 'Comic Sans MS', cursive, sans-serif; }
+.font9 { font-family: 'Lucida Console', monospace; }
+.font10 { font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; }
+.font11 { font-family: 'Garamond', serif; }
+.font12 { font-family: 'Tahoma', sans-serif; }
+.font13 { font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+.font14 { font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif; }
+.font15 { font-family: 'Brush Script MT', cursive; }
+.font16 { font-family: 'Century Gothic', sans-serif; }
+.font17 { font-family: 'Rockwell', serif; }
+.font18 { font-family: 'Baskerville', serif; }
+.font19 { font-family: 'Futura', sans-serif; }
+.font20 { font-family: 'Calibri', sans-serif; }

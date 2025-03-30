@@ -1,4 +1,4 @@
-console.log("ابببببببة:", data); // التحقق من أن البيانات تصل
+
 
 // استرجاع بيان تاع اناليز
 document.addEventListener("DOMContentLoaded", function() {

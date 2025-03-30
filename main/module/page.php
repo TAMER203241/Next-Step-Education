@@ -3,7 +3,7 @@
 session_start(); // بدء الجلسة
 
 // الاتصال بقاعدة البيانات
-$conn = new mysqli("localhost", "root", "", "tamer");
+require_once 'config.php';
 
 // التحقق من نجاح الاتصال
 if ($conn->connect_error) {

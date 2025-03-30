@@ -1,11 +1,6 @@
 <?php
 session_start(); // بدء الجلسة
-$servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "tamer";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+require_once 'config.php';
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
