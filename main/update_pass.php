@@ -26,6 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     $stmt = $conn->prepare("UPDATE tamerdz SET pass = ? WHERE matricul = ?");
     $stmt->bind_param("ss", $hashed_password, $matricul);
 
+
+
+    
     if ($stmt->execute()) {
         echo "✅ تم تغيير كلمة المرور بنجاح!";
         header("Location: main.php");

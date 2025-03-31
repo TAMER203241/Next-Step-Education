@@ -72,7 +72,7 @@ function isActiveForm($formName, $activeForm) {
         <div >
             <div class="text-center mb-8">
                 
-                <h1 id="text1"> Next-Step Education </h1>
+                
                 <h2 class="text-2xl font-bold text-gray-900">تسجيل الدخول</h2>
                 <?= showError($errors['login']);?>
                 <?= showError($errors['register']);?>
@@ -126,7 +126,11 @@ function isActiveForm($formName, $activeForm) {
         </button>
     </div>
 
-    <form id="signup-form" class="space-y-6" action="tamer.php" method="post">
+    <form id="signup-form" class="space-y-6" action="tamer.php" method="post" enctype="multipart/form-data">
+    <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">الصورة الشخصية</label>
+            <input name="image" type="file" accept="image/*" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+        </div>
         <div class="grid grid-cols-2 gap-4">
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">الاسم</label>
@@ -176,7 +180,7 @@ function isActiveForm($formName, $activeForm) {
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">كلمة المرور</label>
             <div class="relative">
-                <input name="pass" type="text" required class="w-full pr-10 pl-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+                <input name="pass" type="password" required class="w-full pr-10 pl-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onclick="togglePassword(this)">
                     <i class="ri-eye-line text-gray-400"></i>
                 </div>

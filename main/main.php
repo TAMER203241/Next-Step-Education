@@ -1,17 +1,24 @@
 
 <?php
 session_start();
+require_once 'config.php';
+
 if (!isset($_SESSION['nom'])) {
     header("Location: index.php");
-
     exit();
-
-
-    
 }
 
+// تعيين قيمة matricul
+$matricul = $_SESSION['matricul'];
 
-
+// جلب الصورة من قاعدة البيانات
+$stmt = $conn->prepare("SELECT image FROM tamerdz WHERE matricul = ?");
+$stmt->bind_param("s", $matricul);
+$stmt->execute();
+$stmt->bind_result($image);
+$stmt->fetch();
+$stmt->close();
+$conn->close();
 ?>
 
 
@@ -49,7 +56,7 @@ DEFAULT: '8px',
 </script>
 <style>
   body{
-    background-color: rgba(245, 237, 224, 0.29);
+    background-color: rgba(0, 0, 0, 0.29);
   }
 :where([class^="ri-"])::before { content: "\f3c2"; }
 @media (min-width: 768px) {
@@ -67,7 +74,8 @@ grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     <!-- اسم المستخدم في أقصى اليسار -->
     <div class="flex-1 flex justify-start items-center gap-4 relative">
       <div class="cursor-pointer flex items-center gap-2" onclick="toggleProfile()">
-<img src="../photo/photo_2025-03-18_18-35-35.jpg" class="w-10 h-10 rounded-full object-cover" alt="Profile">
+
+      <img src="display_image.php" class="w-10 h-10 rounded-full object-cover" alt="Profile">
 <span class="font-medium"> <?php echo htmlspecialchars($_SESSION['nom']) . "  " . htmlspecialchars($_SESSION['prenom']); ?> </span>
 </div>
 <div id="profileModal" class="hidden absolute right-0 top-12 w-72 bg-white rounded-lg shadow-lg p-4 border">
@@ -99,8 +107,14 @@ grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         changer le mot de passe
       </button>
     </div>
+    <div class="pt-2">
+      <button onclick="showimageModal()" class="w-full bg-primary text-white py-2 px-4 rounded-button hover:bg-primary/90 transition-colors">
+      changer la photo de profile
+      </button>
+    </div>
   </div>
 </div>
+
 <div id="passwordModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
   <div class="bg-white rounded-lg p-6 w-96">
     <form action="update_pass.php"  method="POST" >
@@ -118,7 +132,41 @@ grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     </div>
 
   </div>
+
+
+
 </div>
+
+
+<div id="imageModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg p-6 w-96">
+    <form action="update_image.php" method="POST" enctype="multipart/form-data">
+      <h3 class="text-lg font-semibold mb-4">Changer la photo de profil</h3>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Nouvelle photo</label>
+          <input name="image1" type="file" accept="image/*" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-primary">
+        </div>
+      </div>
+      <div class="flex gap-2 mt-4">
+        <button type="submit" name="update1" class="flex-1 bg-primary text-white py-2 px-4 rounded-button hover:bg-primary/90 transition-colors">
+          Envoyer
+        </button>
+        <button type="button" onclick="closeimageModal()" class="flex-1 bg-gray-100 text-gray-700 py-2 px-4 rounded-button hover:bg-gray-200 transition-colors">
+          Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+</div>
+
+
+
+
 <script>
 function toggleProfile() {
   const modal = document.getElementById('profileModal');
@@ -128,8 +176,18 @@ function showPasswordModal() {
   document.getElementById('passwordModal').classList.remove('hidden');
   document.getElementById('profileModal').classList.add('hidden');
 }
+function showimageModal() {
+  document.getElementById('imageModal').classList.remove('hidden');
+  document.getElementById('profileModal').classList.add('hidden');
+}
 function closePasswordModal() {
   document.getElementById('passwordModal').classList.add('hidden');
+}
+function closeimageModal() {
+  document.getElementById('imageModal').classList.add('hidden');
+}
+function updatePassword() {
+  closeimageModal();
 }
 function updatePassword() {
  // const newPassword = document.getElementById('newPassword').value;
@@ -191,7 +249,7 @@ document.addEventListener('click', (e) => {
   function showAlert() {
     alert("  صفحة S1 غير جاهزة حاليا ");
     document.getElementById("s2").checked = true; // إعادة تحديد S2 تلقائيًا
-  }
+  } 
 </script>
 
 
